@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
 
