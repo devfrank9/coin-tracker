@@ -1,7 +1,7 @@
-// eslint-disable-next-line
-import { createGlobalStyle } from "styled-components";
-import Router from "./Router";
-import { ReactQueryDevtools } from "react-query/devtools";
+import {createGlobalStyle, ThemeProvider} from 'styled-components';
+import Router from './Router';
+import {ReactQueryDevtools} from 'react-query/devtools';
+import {darkTheme} from './theme';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
@@ -59,8 +59,8 @@ table {
 body {
   font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: ${(props) => props.theme.bgColor};
-  color:${(props) => props.theme.textColor};
+  background-color: ${props => props.theme.bgColor};
+  color:${props => props.theme.textColor};
   line-height: 1.2;
 }
 a {
@@ -72,9 +72,11 @@ a {
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={darkTheme}>
+        <GlobalStyle />
+        <Router />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
     </>
   );
 }
