@@ -3,6 +3,18 @@ import Router from './Router';
 import {ReactQueryDevtools} from 'react-query/devtools';
 import {darkTheme} from './theme';
 
+function App() {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
+    </>
+  );
+}
+
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
   /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -68,17 +80,5 @@ a {
   color: inherit;
 }
 `;
-
-function App() {
-  return (
-    <>
-      <ThemeProvider theme={darkTheme}>
-        <GlobalStyle />
-        <Router />
-        <ReactQueryDevtools initialIsOpen={true} />
-      </ThemeProvider>
-    </>
-  );
-}
 
 export default App;
